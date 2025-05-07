@@ -1,6 +1,7 @@
 package solutions.qowin.fleet.schedule.infrastructure.persistence.documentdb;
 
 import jakarta.inject.Singleton;
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import solutions.qowin.fleet.schedule.domain.model.Schedule;
@@ -27,7 +28,7 @@ public class EntityMapper {
 
         // Convert Long id to String for MongoDB
         if (schedule.getId() != null) {
-            entity.setId(schedule.getId().toString());
+            entity.setId(new ObjectId(schedule.getId()));
         }
 
         // Map fields from domain model to entity
@@ -56,11 +57,11 @@ public class EntityMapper {
         // Convert String id to Long for domain model
         if (entity.getId() != null) {
             try {
-                schedule.setId(Long.parseLong(entity.getId()));
+                schedule.setId(entity.getId().toString());
             } catch (NumberFormatException e) {
                 LOG.warn("Could not convert MongoDB ID to Long: {}", entity.getId(), e);
                 // Use a default ID or handle as needed
-                schedule.setId(0L);
+                schedule.setId("0L");
             }
         }
 

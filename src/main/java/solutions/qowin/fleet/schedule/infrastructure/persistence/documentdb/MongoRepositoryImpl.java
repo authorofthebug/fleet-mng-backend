@@ -2,6 +2,8 @@ package solutions.qowin.fleet.schedule.infrastructure.persistence.documentdb;
 
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
+import lombok.extern.java.Log;
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import solutions.qowin.fleet.schedule.domain.model.Schedule;
@@ -21,15 +23,9 @@ import java.util.concurrent.atomic.AtomicLong;
  * This implementation is active in all environments, but uses mock data when MongoDB is not available.
  */
 @Singleton
+@Log
 public class MongoRepositoryImpl implements ScheduleRepository {
-    private static final Logger LOG = LoggerFactory.getLogger(MongoRepositoryImpl.class);
-
-    // Mock data storage
-    private static final Map<Long, Schedule> mockSchedules = new HashMap<>();
-    private static final AtomicLong idCounter = new AtomicLong(1);
-
     private final ScheduleDocumentDbRepository documentDbRepository;
-    private final boolean useMockData;
 
     /**
      * Constructor with dependency injection
@@ -38,17 +34,7 @@ public class MongoRepositoryImpl implements ScheduleRepository {
      */
     public MongoRepositoryImpl(ScheduleDocumentDbRepository documentDbRepository) {
         this.documentDbRepository = documentDbRepository;
-        this.useMockData = documentDbRepository == null;
 
-        if (useMockData) {
-            LOG.info("MongoDB repository not available. Using mock data.");
-            // Initialize with some mock data
-            ScheduleUtils.generateRandomSchedules(10).forEach(schedule -> {
-                mockSchedules.put(schedule.getId(), schedule);
-            });
-        } else {
-            LOG.info("Using MongoDB repository for schedule data.");
-        }
     }
 
     /**
@@ -59,34 +45,14 @@ public class MongoRepositoryImpl implements ScheduleRepository {
      */
     @Override
     public Schedule save(Schedule schedule) {
-        if (useMockData) {
-            // Mock implementation
-            if (schedule.getId() == null) {
-                // New schedule - assign an ID
-                schedule.setId(idCounter.getAndIncrement());
-                schedule.setCreatedAt(LocalDateTime.now());
-            }
-            schedule.setUpdatedAt(LocalDateTime.now());
-            mockSchedules.put(schedule.getId(), schedule);
-            return schedule;
-        } else {
-            // Real MongoDB implementation
             try {
                 DocumentDbEntity entity = EntityMapper.toEntity(schedule);
                 DocumentDbEntity savedEntity = documentDbRepository.save(entity);
                 return EntityMapper.toDomainModel(savedEntity);
             } catch (Exception e) {
-                LOG.error("Error saving schedule to MongoDB", e);
-                // Fallback to mock implementation
-                if (schedule.getId() == null) {
-                    schedule.setId(idCounter.getAndIncrement());
-                    schedule.setCreatedAt(LocalDateTime.now());
-                }
-                schedule.setUpdatedAt(LocalDateTime.now());
-                mockSchedules.put(schedule.getId(), schedule);
-                return schedule;
+                log.severe("Error saving schedule to MongoDB"+ e);
             }
-        }
+            throw new RuntimeException("Failed to save schedule");
     }
 
     /**
@@ -96,25 +62,18 @@ public class MongoRepositoryImpl implements ScheduleRepository {
      * @return An Optional containing the schedule if found, or empty if not found
      */
     @Override
-    public Optional<Schedule> findById(Long id) {
+    public Optional<Schedule> findById(String id) {
         if (id == null) {
             return Optional.empty();
         }
 
-        if (useMockData) {
-            // Mock implementation
-            return Optional.ofNullable(mockSchedules.get(id));
-        } else {
-            // Real MongoDB implementation
             try {
-                return documentDbRepository.findById(id.toString())
+                return documentDbRepository.findById(new ObjectId(id))
                         .map(EntityMapper::toDomainModel);
             } catch (Exception e) {
-                LOG.error("Error finding schedule in MongoDB with ID: {}", id, e);
-                // Fallback to mock implementation
-                return Optional.ofNullable(mockSchedules.get(id));
+                log.severe("Error finding schedule in MongoDB with ID: {}"+ id+ e);
             }
-        }
+        throw new RuntimeException("Failed to find schedule");
     }
 
     /**
@@ -128,62 +87,35 @@ public class MongoRepositoryImpl implements ScheduleRepository {
             return;
         }
 
-        if (useMockData) {
-            // Mock implementation
-            mockSchedules.remove(schedule.getId());
-        } else {
             // Real MongoDB implementation
             try {
                 DocumentDbEntity entity = EntityMapper.toEntity(schedule);
                 documentDbRepository.delete(entity);
             } catch (Exception e) {
-                LOG.error("Error deleting schedule from MongoDB with ID: {}", schedule.getId(), e);
+                log.severe("Error deleting schedule from MongoDB with ID: {}"+ schedule.getId()+ e);
                 // Fallback to mock implementation
-                mockSchedules.remove(schedule.getId());
             }
         }
-    }
 
-    /**
-     * Deletes a schedule by its ID from the database or mock storage
-     *
-     * @param id The ID of the schedule to delete
-     */
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         if (id == null) {
             return;
         }
 
-        if (useMockData) {
-            // Mock implementation
-            mockSchedules.remove(id);
-        } else {
-            // Real MongoDB implementation
-            try {
-                documentDbRepository.deleteById(id.toString());
-            } catch (Exception e) {
-                LOG.error("Error deleting schedule from MongoDB with ID: {}", id, e);
-                // Fallback to mock implementation
-                mockSchedules.remove(id);
-            }
+        try {
+            documentDbRepository.deleteById(new ObjectId(id));
+        } catch (Exception e) {
+            log.severe("Error deleting schedule from MongoDB with ID: {}"+ id+e);
         }
     }
 
     @Override
     public List<Schedule> findAll() {
         return documentDbRepository.findAll().stream()
-                .map(EntityMapper::toDomainModel)
-                .toList();
+            .map(EntityMapper::toDomainModel)
+            .toList();
     }
 
-    /**
-     * Gets all schedules from the mock storage.
-     * This method is not part of the ScheduleRepository interface but can be useful for testing.
-     *
-     * @return A list of all schedules in the mock storage
-     */
-    public List<Schedule> getAllMockSchedules() {
-        return new ArrayList<>(mockSchedules.values());
-    }
+
 }

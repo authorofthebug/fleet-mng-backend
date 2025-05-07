@@ -23,7 +23,7 @@ public class ScheduleUtils {
 
     for (long i = 1; i <= count; i++) {
       Schedule schedule = new Schedule();
-      schedule.setId(i);
+      schedule.setId(""+i);
       schedule.setName("Schedule " + i);  // Usar setName en lugar de setTitle
       schedule.setDescription("Descripción de la programación " + i);
 

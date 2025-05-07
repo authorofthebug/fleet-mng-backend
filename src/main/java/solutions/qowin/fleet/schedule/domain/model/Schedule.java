@@ -17,7 +17,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Schedule {
-    private Long id;
+    private String id;
 
     private String code;
 

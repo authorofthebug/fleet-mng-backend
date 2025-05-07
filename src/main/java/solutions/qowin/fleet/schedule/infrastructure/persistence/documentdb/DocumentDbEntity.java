@@ -3,12 +3,13 @@ package solutions.qowin.fleet.schedule.infrastructure.persistence.documentdb;
 import io.micronaut.data.annotation.Id;
 import io.micronaut.data.annotation.MappedEntity;
 import lombok.Data;
+import org.bson.types.ObjectId;
 
 @Data
 @MappedEntity("schedules")
 public class DocumentDbEntity {
     @Id
-    private String id;
+    private ObjectId id;
 
     // Add other fields as needed
     private String code;
@@ -16,11 +17,11 @@ public class DocumentDbEntity {
     private String description;
     private String status;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

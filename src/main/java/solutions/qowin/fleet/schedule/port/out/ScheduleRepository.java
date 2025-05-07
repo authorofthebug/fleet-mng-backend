@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public interface ScheduleRepository {
     Schedule save(Schedule schedule);
-    Optional<Schedule> findById(Long id);
+    Optional<Schedule> findById(String id);
     void delete(Schedule schedule);
-    void deleteById(Long id);
+    void deleteById(String id);
     List<Schedule> findAll();
 } 

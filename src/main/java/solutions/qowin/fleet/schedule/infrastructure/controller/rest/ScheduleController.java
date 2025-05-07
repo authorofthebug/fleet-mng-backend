@@ -20,22 +20,21 @@ import java.util.Map;
 public class ScheduleController {
 
   private final ScheduleService scheduleService;
-  private final ScheduleMapper scheduleMapper;
 
   @Inject
-  public ScheduleController(ScheduleService scheduleService, ScheduleMapper scheduleMapper) {
+  public ScheduleController(ScheduleService scheduleService) {
     this.scheduleService = scheduleService;
-    this.scheduleMapper = scheduleMapper;
   }
 
   @Post
   public HttpResponse<ScheduleDTO> createSchedule(@Body CreateScheduleRequest request) {
-    return HttpResponse.created(scheduleMapper.toDTO(scheduleService.create(scheduleMapper.toDomain(request))));
+    return HttpResponse.created(
+        ScheduleMapper.toDTO(scheduleService.create(ScheduleMapper.toDomain(request))));
   }
 
   @Get("/{id}")
-  public HttpResponse<ScheduleDTO> getSchedule(@PathVariable Long id) {
-    return HttpResponse.ok(scheduleMapper.toDTO(scheduleService.findById(id)));
+  public HttpResponse<ScheduleDTO> getSchedule(@PathVariable String id) {
+    return HttpResponse.ok(ScheduleMapper.toDTO(scheduleService.findById(id)));
   }
 
   @Get
@@ -51,13 +50,13 @@ public class ScheduleController {
 
   @Put("/{id}")
   public HttpResponse<ScheduleDTO> updateSchedule(@PathVariable Long id, @Body CreateScheduleRequest request) {
-    var schedule = scheduleMapper.toDomain(request);
-    schedule.setId(id);
-    return HttpResponse.ok(scheduleMapper.toDTO(scheduleService.getAll().get(0)));
+    var schedule = ScheduleMapper.toDomain(request);
+    schedule.setId(""+id);
+    return HttpResponse.ok(ScheduleMapper.toDTO(scheduleService.getAll().get(0)));
   }
 
   @Delete("/{id}")
-  public HttpResponse<Void> deleteSchedule(@PathVariable Long id) {
+  public HttpResponse<Void> deleteSchedule(@PathVariable String id) {
     scheduleService.delete(id);
     return HttpResponse.noContent();
   }

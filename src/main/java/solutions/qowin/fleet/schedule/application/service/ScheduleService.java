@@ -29,7 +29,7 @@ public class ScheduleService implements ManagementScheduleUseCase {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         scheduleRepository.deleteById(id);
     }
 
@@ -54,7 +54,7 @@ public class ScheduleService implements ManagementScheduleUseCase {
         return schedules;
     }
 
-    public Schedule findById(Long id) {
+    public Schedule findById(String id) {
         return scheduleRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Schedule not found"));
     }

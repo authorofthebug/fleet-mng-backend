@@ -8,6 +8,6 @@ import java.util.List;
 public interface ManagementScheduleUseCase {
     Schedule create(Schedule schedule);
     Schedule update(Schedule schedule);
-    void delete(Long id);
+    void delete(String id);
     List<Schedule> getAll();
 } 
