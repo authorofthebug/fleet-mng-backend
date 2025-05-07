@@ -1,6 +1,5 @@
 package solutions.qowin.fleet.schedule.infrastructure.controller.rest;
 
-import io.micronaut.core.annotation.Introspected;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
@@ -11,9 +10,7 @@ import solutions.qowin.fleet.schedule.infrastructure.controller.rest.dto.CreateS
 import solutions.qowin.fleet.schedule.infrastructure.controller.rest.dto.ScheduleDTO;
 import solutions.qowin.fleet.schedule.shared.mappers.ScheduleMapper;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @Controller("/api/schedules")

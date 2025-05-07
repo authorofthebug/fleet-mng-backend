@@ -1,22 +1,13 @@
 package solutions.qowin.fleet.schedule.infrastructure.persistence.documentdb;
 
-import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import lombok.extern.java.Log;
 import org.bson.types.ObjectId;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import solutions.qowin.fleet.schedule.domain.model.Schedule;
 import solutions.qowin.fleet.schedule.port.out.ScheduleRepository;
-import solutions.qowin.fleet.schedule.shared.mappers.ScheduleUtils;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * MongoDB implementation of the ScheduleRepository interface.
