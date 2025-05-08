@@ -5,6 +5,7 @@ import lombok.extern.java.Log;
 import org.bson.types.ObjectId;
 import solutions.qowin.fleet.schedule.domain.model.Schedule;
 import solutions.qowin.fleet.schedule.port.out.ScheduleRepository;
+import solutions.qowin.fleet.schedule.shared.mappers.EntityMapper;
 
 import java.util.List;
 import java.util.Optional;

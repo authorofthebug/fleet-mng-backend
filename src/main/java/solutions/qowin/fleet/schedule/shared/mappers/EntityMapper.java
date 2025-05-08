@@ -1,10 +1,11 @@
-package solutions.qowin.fleet.schedule.infrastructure.persistence.documentdb;
+package solutions.qowin.fleet.schedule.shared.mappers;
 
 import jakarta.inject.Singleton;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import solutions.qowin.fleet.schedule.domain.model.Schedule;
+import solutions.qowin.fleet.schedule.infrastructure.persistence.documentdb.DocumentDbEntity;
 
 /**
  * Mapper class to convert between Schedule domain model and DocumentDbEntity
