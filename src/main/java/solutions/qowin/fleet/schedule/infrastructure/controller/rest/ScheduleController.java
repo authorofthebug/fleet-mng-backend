@@ -46,10 +46,10 @@ public class ScheduleController {
   }
 
   @Put("/{id}")
-  public HttpResponse<ScheduleDTO> updateSchedule(@PathVariable Long id, @Body CreateScheduleRequest request) {
+  public HttpResponse<ScheduleDTO> updateSchedule(@PathVariable String id, @Body CreateScheduleRequest request) {
     var schedule = ScheduleMapper.toDomain(request);
-    schedule.setId(""+id);
-    return HttpResponse.ok(ScheduleMapper.toDTO(scheduleService.getAll().get(0)));
+    schedule.setId(id);
+    return HttpResponse.ok(ScheduleMapper.toDTO(scheduleService.update(schedule)));
   }
 
   @Delete("/{id}")

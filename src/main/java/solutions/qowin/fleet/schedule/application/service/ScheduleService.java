@@ -24,7 +24,7 @@ public class ScheduleService implements ManagementScheduleUseCase {
 
     @Override
     public Schedule update(Schedule schedule) {
-        return scheduleRepository.save(schedule);
+        return scheduleRepository.update(schedule);
     }
 
     @Override

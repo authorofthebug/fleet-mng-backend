@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ScheduleRepository {
+    Schedule update(Schedule schedule);
     Schedule save(Schedule schedule);
     Optional<Schedule> findById(String id);
     void delete(Schedule schedule);

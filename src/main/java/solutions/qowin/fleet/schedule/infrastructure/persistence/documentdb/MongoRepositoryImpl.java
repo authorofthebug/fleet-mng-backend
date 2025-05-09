@@ -47,6 +47,18 @@ public class MongoRepositoryImpl implements ScheduleRepository {
             throw new RuntimeException("Failed to save schedule");
     }
 
+    @Override
+    public Schedule update(Schedule schedule) {
+            try {
+                DocumentDbEntity entity = EntityMapper.toEntity(schedule);
+                DocumentDbEntity savedEntity = documentDbRepository.update(entity);
+                return EntityMapper.toDomainModel(savedEntity);
+            } catch (Exception e) {
+                log.severe("Error saving schedule to MongoDB"+ e);
+            }
+            throw new RuntimeException("Failed to save schedule");
+    }
+
     /**
      * Finds a schedule by its ID from the database or mock storage
      *
