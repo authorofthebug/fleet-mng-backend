@@ -17,24 +17,42 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateScheduleRequest {
-    private String title;
-    private String origin;
-    private String destination;
     private String description;
+    private String status;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private String clientId;
+    private String vehicleId;
+    private String driverId;
+    private String origin;
+    private String plate;
+    private String zone;
+    private String destination;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private String status;
-    private String location;
-    //Objeto cliente
-    //Tipo de servicio por empresa y ACTIVO
-    // Tipo de condicion
 
-    public String getTitle() {
-        return title;
+    public String getDriverId() {
+        return driverId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setDriverId(String driverId) {
+        this.driverId = driverId;
+    }
+
+    public String getPlate() {
+        return plate;
+    }
+
+    public void setPlate(String plate) {
+        this.plate = plate;
+    }
+
+    public String getZone() {
+        return zone;
+    }
+
+    public void setZone(String zone) {
+        this.zone = zone;
     }
 
     public String getDescription() {
@@ -69,11 +87,51 @@ public class CreateScheduleRequest {
         this.status = status;
     }
 
-    public String getLocation() {
-        return location;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(String vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 }

@@ -24,7 +24,9 @@ public class VehicleEntityMapper {
 
     public static Vehicle toDomain(VehicleDocDbEntity entity) {
         Vehicle vehicle = new Vehicle();
-        //vehicle.setId(entity.getId().toString());
+        if (entity.getId() != null) {
+            vehicle.setId(entity.getId().toString());
+        }
         vehicle.setLicensePlate(entity.getLicensePlate());
         vehicle.setBrand(entity.getBrand());
         vehicle.setModel(entity.getModel());

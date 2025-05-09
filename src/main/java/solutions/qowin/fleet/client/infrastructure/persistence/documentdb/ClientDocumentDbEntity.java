@@ -2,29 +2,25 @@ package solutions.qowin.fleet.client.infrastructure.persistence.documentdb;
 
 import io.micronaut.data.annotation.Id;
 import io.micronaut.data.annotation.MappedEntity;
-
 import lombok.Data;
 import org.bson.types.ObjectId;
 
 import java.time.LocalDateTime;
 
 @Data
-@MappedEntity("clients")
+@MappedEntity("client")
 public class ClientDocumentDbEntity {
 
     @Id
     private ObjectId id;
-
     private String name;
-
-    private String code;
-
-    private String description;
-
+    private String email;
+    private String phone;
+    private String address;
+    private String taxId;
     private String status;
-
+    private String notes;
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
 
     public ObjectId getId() {
@@ -43,20 +39,36 @@ public class ClientDocumentDbEntity {
         this.name = name;
     }
 
-    public String getCode() {
-        return code;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTaxId() {
+        return taxId;
+    }
+
+    public void setTaxId(String taxId) {
+        this.taxId = taxId;
     }
 
     public String getStatus() {
@@ -65,6 +77,14 @@ public class ClientDocumentDbEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public LocalDateTime getCreatedAt() {

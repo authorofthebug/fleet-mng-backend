@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Driver;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 /**
  * Represents a schedule in the system that defines time slots for various operations.
@@ -18,27 +16,17 @@ import java.time.LocalTime;
 @AllArgsConstructor
 public class Schedule {
     private String id;
-
-    private String code;
-
-    private String name;
-
     private String description;
-
-    private LocalTime startTime;
-
-    private LocalTime endTime;
-
     private String status;
-
-    private Driver driver;
-
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
-
-    private String createdBy;
-
-    private String updatedBy;
-
-} 
+    private String clientId;
+    private String vehicleId;
+    private String driverId;
+    private String origin;
+    private String plate;
+    private String zone;
+    private String destination;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+}

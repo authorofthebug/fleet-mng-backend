@@ -31,14 +31,21 @@ public class EntityMapper {
         if (schedule.getId() != null) {
             entity.setId(new ObjectId(schedule.getId()));
         }
-
-        // Map fields from domain model to entity
-        entity.setCode(schedule.getCode());
-        entity.setName(schedule.getName());
+        entity.setClientId(schedule.getClientId());
+        entity.setVehicleId(schedule.getVehicleId());
+        entity.setOrigin(schedule.getOrigin());
+        entity.setDestination(schedule.getDestination());
+        entity.setStartTime(schedule.getStartTime());
+        entity.setEndTime(schedule.getEndTime());
         entity.setDescription(schedule.getDescription());
         entity.setStatus(schedule.getStatus());
+        entity.setCreatedAt(schedule.getCreatedAt());
+        entity.setUpdatedAt(schedule.getUpdatedAt());
+        entity.setPlate(schedule.getPlate());
+        entity.setZone(schedule.getZone());
+        entity.setDriverId(schedule.getDriverId());
 
-        LOG.debug("Mapped domain model to entity: {}", entity);
+        LOG.info("Mapped domain model to entity: {}", entity);
         return entity;
     }
 
@@ -67,10 +74,19 @@ public class EntityMapper {
         }
 
         // Map fields from entity to domain model
-        schedule.setCode(entity.getCode());
-        schedule.setName(entity.getName());
+        schedule.setClientId(entity.getClientId());
+        schedule.setVehicleId(entity.getVehicleId());
+        schedule.setOrigin(entity.getOrigin());
+        schedule.setDestination(entity.getDestination());
+        schedule.setStartTime(entity.getStartTime());
+        schedule.setEndTime(entity.getEndTime());
         schedule.setDescription(entity.getDescription());
         schedule.setStatus(entity.getStatus());
+        schedule.setCreatedAt(entity.getCreatedAt());
+        schedule.setUpdatedAt(entity.getUpdatedAt());
+        schedule.setPlate(entity.getPlate());
+        schedule.setZone(entity.getZone());
+        schedule.setDriverId(entity.getDriverId());
 
         LOG.debug("Mapped entity to domain model: {}", schedule);
         return schedule;

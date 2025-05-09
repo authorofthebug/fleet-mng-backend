@@ -22,20 +22,17 @@ public class EntityMapper {
     }
 
     ClientDocumentDbEntity entity = new ClientDocumentDbEntity();
-    entity.setId(new ObjectId(client.getId()));
-
-    // Map basic fields
+    if (client.getId() != null) {
+      entity.setId(new ObjectId(client.getId()));
+    }
+    entity.setEmail(client.getEmail());
+    entity.setPhone(client.getPhone());
+    entity.setAddress(client.getAddress());
+    entity.setTaxId(client.getTaxId());
     entity.setName(client.getName());
     entity.setStatus(client.getStatus());
-
-    // Map description from notes (based on available fields in ClientDocumentDbEntity)
-    entity.setDescription(client.getNotes());
-
-    // Map code from taxId or other identifier (based on available fields)
-    entity.setCode(client.getTaxId());
-
-    // Set timestamps
     LocalDateTime now = LocalDateTime.now();
+
     if (client.getCreatedAt() != null) {
       entity.setCreatedAt(client.getCreatedAt());
     } else {
@@ -57,21 +54,16 @@ public class EntityMapper {
     if (entity == null) {
       return null;
     }
-
     Client client = new Client();
-
-
-    // Map basic fields
+    if (entity.getId() != null) {
+      client.setId(entity.getId().toString());
+    }
+    client.setTaxId(entity.getTaxId());
     client.setName(entity.getName());
+    client.setEmail(entity.getEmail());
+    client.setPhone(entity.getPhone());
+    client.setAddress(entity.getAddress());
     client.setStatus(entity.getStatus());
-
-    // Map notes from description (based on available fields in ClientDocumentDbEntity)
-    client.setNotes(entity.getDescription());
-
-    // Map taxId from code (based on available fields)
-    client.setTaxId(entity.getCode());
-
-    // Set timestamps
     client.setCreatedAt(entity.getCreatedAt());
     client.setUpdatedAt(entity.getUpdatedAt());
 

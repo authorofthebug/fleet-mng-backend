@@ -1,8 +1,6 @@
 package solutions.qowin.fleet.client.domain.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -10,37 +8,98 @@ import java.time.LocalDateTime;
 /**
  * Entity representing a client in the fleet management system.
  */
-@Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Client {
     private String id;
     
     private String name;
-    
     private String email;
-    
     private String phone;
-    
     private String address;
-    
     private String taxId;
-    
     private String status;
-    
     private String notes;
-    
     private LocalDateTime createdAt;
-    
     private LocalDateTime updatedAt;
-    
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
+
+    public String getId() {
+        return id;
     }
-    
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
+
+    public void setId(String id) {
+        this.id = id;
     }
-} 
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTaxId() {
+        return taxId;
+    }
+
+    public void setTaxId(String taxId) {
+        this.taxId = taxId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+}

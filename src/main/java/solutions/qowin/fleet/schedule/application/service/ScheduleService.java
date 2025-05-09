@@ -1,6 +1,5 @@
 package solutions.qowin.fleet.schedule.application.service;
 
-import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import solutions.qowin.fleet.schedule.domain.model.Schedule;
 import solutions.qowin.fleet.schedule.port.in.ManagementScheduleUseCase;
@@ -44,7 +43,7 @@ public class ScheduleService implements ManagementScheduleUseCase {
             List<Schedule> randomSchedules = ScheduleUtils.generateRandomSchedules(10);
             System.out.println("Generated " + randomSchedules.size() + " random schedules");
             for (Schedule schedule : randomSchedules) {
-                System.out.println("Saving schedule: " + schedule.getId() + " - " + schedule.getName());
+                System.out.println("Saving schedule: " + schedule.getId());
                 scheduleRepository.save(schedule);
             }
             return randomSchedules;
