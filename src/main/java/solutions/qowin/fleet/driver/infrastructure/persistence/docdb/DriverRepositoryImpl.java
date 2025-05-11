@@ -26,6 +26,13 @@ public class DriverRepositoryImpl implements DriverRepository {
     }
 
     @Override
+    public Driver update(Driver driver) {
+        DocDbEntity entity = EntityMapper.toEntity(driver);
+        DocDbEntity savedEntity = repository.update(entity);
+        return EntityMapper.toDomain(savedEntity);
+    }
+
+    @Override
     public Optional<Driver> findById(String id) {
         return repository.findById(new ObjectId(id)).map(EntityMapper::toDomain);
     }

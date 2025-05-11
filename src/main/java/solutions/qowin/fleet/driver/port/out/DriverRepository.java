@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface DriverRepository {
     Driver save(Driver driver);
+    Driver update(Driver driver);
     Optional<Driver> findById(String id);
     void deleteById(String id);
     List<Driver> findAll();

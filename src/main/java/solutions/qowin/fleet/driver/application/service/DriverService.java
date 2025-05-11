@@ -23,7 +23,7 @@ public class DriverService implements ManagementDriverUseCase {
 
     @Override
     public Driver update(Driver driver) {
-        return driverRepository.save(driver);
+        return driverRepository.update(driver);
     }
 
     @Override
