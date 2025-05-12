@@ -38,6 +38,12 @@ public class GenericTypeController {
         return HttpResponse.ok(genericTypeService.getbyCategoryAndStatus(category.toUpperCase(), status.toUpperCase()).stream().map(GenericTypeMapper::toDTO).toList());
     }
 
+    @Get
+    public HttpResponse<List<GenericTypeDTO>> getAllActives() {
+
+        return HttpResponse.ok(genericTypeService.getAllActives().stream().map(GenericTypeMapper::toDTO).toList());
+    }
+
     @Put("/{id}")
     public HttpResponse<GenericTypeDTO> updateGenericType(@PathVariable String id, @Body CreateGenericTypeRequest request) {
         var genericType = GenericTypeMapper.toDomain(request);

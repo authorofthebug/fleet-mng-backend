@@ -10,4 +10,5 @@ public interface ManagementGenericTypeUseCase {
     void delete(String id);
     GenericType findById(String id);
     List<GenericType> getbyCategoryAndStatus(String category, String status);
+    List<GenericType> getAllActives();
 } 

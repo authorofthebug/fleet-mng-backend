@@ -41,4 +41,9 @@ public class GenericTypeService implements ManagementGenericTypeUseCase {
     public List<GenericType> getbyCategoryAndStatus(String category, String status) {
         return genericTypeRepository.getbyCategoryAndStatus(category, status);
     }
+
+    @Override
+    public List<GenericType> getAllActives() {
+        return genericTypeRepository.getAllActives();
+    }
 } 

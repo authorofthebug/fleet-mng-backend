@@ -12,4 +12,5 @@ public interface GenericTypeRepository {
     Optional<GenericType> findById(String id);
     void deleteById(String id);
     List<GenericType> getbyCategoryAndStatus(String category, String status);
-} 
+    List<GenericType> getAllActives();
+}

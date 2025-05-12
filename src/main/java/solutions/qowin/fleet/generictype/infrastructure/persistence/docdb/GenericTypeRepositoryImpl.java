@@ -43,6 +43,13 @@ public class GenericTypeRepositoryImpl implements GenericTypeRepository {
     }
 
     @Override
+    public List<GenericType> getAllActives() {
+        return repository.findByStatus("ACTIVE").stream()
+            .map(EntityMapper::toDomain)
+            .toList();
+    }
+
+    @Override
     public void deleteById(String id) {
         repository.deleteById(new ObjectId(id));
     }

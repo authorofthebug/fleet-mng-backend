@@ -12,9 +12,9 @@ public class GenericTypeMapper {
         GenericType genericType = new GenericType();
         genericType.setName(request.getName());
         genericType.setCode(request.getCode());
-        genericType.setCategory(request.getCategory());
+        genericType.setCategory(request.getCategory().toUpperCase());
         genericType.setDescription(request.getDescription());
-        genericType.setStatus(request.getStatus());
+        genericType.setStatus(request.getStatus().toUpperCase());
         return genericType;
     }
 
