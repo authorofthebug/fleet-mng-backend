@@ -9,6 +9,8 @@ public class EntityMapper {
         RdsEntity entity = new RdsEntity();
         if (genericType.getId() != null) {
             entity.setId(new ObjectId(genericType.getId()));
+        } else {
+            entity.setId(new ObjectId());
         }
         entity.setName(genericType.getName());
         entity.setDescription(genericType.getDescription());

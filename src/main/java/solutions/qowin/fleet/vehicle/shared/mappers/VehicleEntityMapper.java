@@ -9,6 +9,8 @@ public class VehicleEntityMapper {
         VehicleDocDbEntity entity = new VehicleDocDbEntity();
         if (vehicle.getId() != null) {
             entity.setId(new ObjectId(vehicle.getId()));
+        } else {
+            entity.setId(new ObjectId());
         }
         entity.setLicensePlate(vehicle.getLicensePlate());
         entity.setBrand(vehicle.getBrand());

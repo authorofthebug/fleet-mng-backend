@@ -24,6 +24,8 @@ public class EntityMapper {
     ClientDocumentDbEntity entity = new ClientDocumentDbEntity();
     if (client.getId() != null) {
       entity.setId(new ObjectId(client.getId()));
+    } else {
+      entity.setId(new ObjectId());
     }
     entity.setEmail(client.getEmail());
     entity.setPhone(client.getPhone());

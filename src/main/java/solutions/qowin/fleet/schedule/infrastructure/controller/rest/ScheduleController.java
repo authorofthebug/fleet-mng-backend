@@ -13,7 +13,7 @@ import solutions.qowin.fleet.schedule.shared.mappers.ScheduleMapper;
 import java.util.List;
 
 
-@Controller("/api/schedules")
+@Controller("/dev/schedule")
 public class ScheduleController {
 
   private final ScheduleService scheduleService;

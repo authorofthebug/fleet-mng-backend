@@ -10,7 +10,7 @@ import solutions.qowin.fleet.driver.shared.mappers.DriverMapper;
 
 import java.util.List;
 
-@Controller("/api/drivers")
+@Controller("/dev/driver")
 @Introspected
 public class DriverController {
 

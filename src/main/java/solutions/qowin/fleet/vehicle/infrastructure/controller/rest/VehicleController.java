@@ -11,7 +11,7 @@ import solutions.qowin.fleet.vehicle.shared.mappers.VehicleDomainMapper;
 
 import java.util.List;
 
-@Controller("/api/vehicles")
+@Controller("/dev/vehicle")
 @Introspected
 public class VehicleController {
 

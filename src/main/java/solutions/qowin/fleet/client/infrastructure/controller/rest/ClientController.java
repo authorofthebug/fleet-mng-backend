@@ -11,7 +11,7 @@ import solutions.qowin.fleet.client.shared.mappers.ClientMapper;
 
 import java.util.List;
 
-@Controller("/api/clients")
+@Controller("/dev/client")
 @Introspected
 public class ClientController {
 

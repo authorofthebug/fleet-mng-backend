@@ -30,6 +30,8 @@ public class EntityMapper {
         // Convert Long id to String for MongoDB
         if (schedule.getId() != null) {
             entity.setId(new ObjectId(schedule.getId()));
+        } else {
+            entity.setId(new ObjectId());
         }
         entity.setClientId(schedule.getClientId());
         entity.setVehicleId(schedule.getVehicleId());

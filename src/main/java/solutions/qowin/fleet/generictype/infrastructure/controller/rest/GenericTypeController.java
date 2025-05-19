@@ -11,7 +11,7 @@ import solutions.qowin.fleet.generictype.shared.mappers.GenericTypeMapper;
 
 import java.util.List;
 
-@Controller("/api/generic-types")
+@Controller("/dev/generic-type")
 @Introspected
 public class GenericTypeController {
 

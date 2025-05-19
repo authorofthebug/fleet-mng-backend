@@ -4,7 +4,6 @@ import jakarta.inject.Singleton;
 import solutions.qowin.fleet.schedule.domain.model.Schedule;
 import solutions.qowin.fleet.schedule.port.in.ManagementScheduleUseCase;
 import solutions.qowin.fleet.schedule.port.out.ScheduleRepository;
-import solutions.qowin.fleet.schedule.shared.mappers.ScheduleUtils;
 
 import java.util.List;
 
@@ -35,22 +34,8 @@ public class ScheduleService implements ManagementScheduleUseCase {
     @Override
     public List<Schedule> getAll() {
         // Get all schedules from the repository
-        List<Schedule> schedules = scheduleRepository.findAll();
+        return scheduleRepository.findAll();
 
-        // If no schedules exist, generate and save some random ones
-        if (schedules.isEmpty()) {
-            System.out.println("No schedules found, generating random ones");
-            List<Schedule> randomSchedules = ScheduleUtils.generateRandomSchedules(10);
-            System.out.println("Generated " + randomSchedules.size() + " random schedules");
-            for (Schedule schedule : randomSchedules) {
-                System.out.println("Saving schedule: " + schedule.getId());
-                scheduleRepository.save(schedule);
-            }
-            return randomSchedules;
-        }
-
-        System.out.println("Found " + schedules.size() + " schedules in repository");
-        return schedules;
     }
 
     public Schedule findById(String id) {

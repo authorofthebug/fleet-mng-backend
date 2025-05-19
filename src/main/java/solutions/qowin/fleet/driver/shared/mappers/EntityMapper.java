@@ -9,6 +9,8 @@ public class EntityMapper {
         DocDbEntity entity = new DocDbEntity();
         if (driver.getId() != null) {
             entity.setId(new ObjectId(driver.getId()));
+        }else {
+            entity.setId(new ObjectId());
         }
         entity.setFirstName(driver.getFirstName());
         entity.setLastName(driver.getLastName());
