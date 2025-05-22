@@ -23,6 +23,9 @@ public class ScheduleMapper {
         schedule.setPlate(request.getPlate());
         schedule.setZone(request.getZone());
         schedule.setDriverId(request.getDriverId());
+        schedule.setConditionType(request.getConditionType());
+        schedule.setVehicleType(request.getVehicleType());
+        schedule.setServiceType(request.getServiceType());
 
         return schedule;
     }
@@ -43,6 +46,9 @@ public class ScheduleMapper {
         dto.setPlate(schedule.getPlate());
         dto.setZone(schedule.getZone());
         dto.setDriverId(schedule.getDriverId());
+        dto.setConditionType(schedule.getConditionType());
+        dto.setVehicleType(schedule.getVehicleType());
+        dto.setServiceType(schedule.getServiceType());
         return dto;
     }
 }

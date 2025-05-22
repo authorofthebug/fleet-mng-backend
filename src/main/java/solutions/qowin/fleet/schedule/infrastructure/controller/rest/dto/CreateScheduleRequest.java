@@ -17,19 +17,23 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateScheduleRequest {
+    private String origin;
+    private String destination;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private String clientId;
+    private String serviceType;
+    private String conditionType;
+    private String vehicleType;
+    private String vehicleId;
+    private String driverId;
+
     private String description;
     private String status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private String clientId;
-    private String vehicleId;
-    private String driverId;
-    private String origin;
     private String plate;
     private String zone;
-    private String destination;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
 
     public String getDriverId() {
         return driverId;
@@ -133,5 +137,29 @@ public class CreateScheduleRequest {
 
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
+
+    public String getConditionType() {
+        return conditionType;
+    }
+
+    public void setConditionType(String conditionType) {
+        this.conditionType = conditionType;
+    }
+
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 }

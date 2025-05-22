@@ -19,6 +19,11 @@ public class DriverMapper {
         driver.setAddress(request.getAddress());
         driver.setStatus(request.getStatus());
         driver.setNotes(request.getNotes());
+        driver.setCreatedAt(request.getCreatedAt());
+        driver.setUpdatedAt(request.getUpdatedAt());
+        driver.setRut(request.getRut());
+        driver.setFolio(request.getFolio());
+        driver.setDocType(request.getDocType());
         return driver;
     }
 
@@ -36,6 +41,9 @@ public class DriverMapper {
         dto.setNotes(driver.getNotes());
         dto.setCreatedAt(driver.getCreatedAt());
         dto.setUpdatedAt(driver.getUpdatedAt());
+        dto.setRut(driver.getRut());
+        dto.setFolio(driver.getFolio());
+        dto.setDocType(driver.getDocType());
         return dto;
     }
 } 

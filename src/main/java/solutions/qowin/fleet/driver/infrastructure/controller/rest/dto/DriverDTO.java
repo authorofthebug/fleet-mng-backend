@@ -22,6 +22,9 @@ public class DriverDTO {
     private String address;
     private String status;
     private String notes;
+    private String rut;
+    private String folio;
+    private String docType;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -119,5 +122,29 @@ public class DriverDTO {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public String getFolio() {
+        return folio;
+    }
+
+    public void setFolio(String folio) {
+        this.folio = folio;
+    }
+
+    public String getDocType() {
+        return docType;
+    }
+
+    public void setDocType(String docType) {
+        this.docType = docType;
     }
 }

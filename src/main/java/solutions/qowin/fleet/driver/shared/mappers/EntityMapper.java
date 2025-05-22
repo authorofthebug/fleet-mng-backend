@@ -23,6 +23,9 @@ public class EntityMapper {
         entity.setNotes(driver.getNotes());
         entity.setCreatedAt(driver.getCreatedAt());
         entity.setUpdatedAt(driver.getUpdatedAt());
+        entity.setRut(driver.getRut());
+        entity.setFolio(driver.getFolio());
+        entity.setDocType(driver.getDocType());
         return entity;
     }
 
@@ -42,6 +45,9 @@ public class EntityMapper {
         driver.setNotes(entity.getNotes());
         driver.setCreatedAt(entity.getCreatedAt());
         driver.setUpdatedAt(entity.getUpdatedAt());
+        driver.setRut(entity.getRut());
+        driver.setFolio(entity.getFolio());
+        driver.setDocType(entity.getDocType());
         return driver;
     }
 }

@@ -46,6 +46,10 @@ public class EntityMapper {
         entity.setPlate(schedule.getPlate());
         entity.setZone(schedule.getZone());
         entity.setDriverId(schedule.getDriverId());
+        entity.setConditionType(schedule.getConditionType());
+        entity.setVehicleType(schedule.getVehicleType());
+        entity.setServiceType(schedule.getServiceType());
+
 
         LOG.info("Mapped domain model to entity: {}", entity);
         return entity;
@@ -89,6 +93,9 @@ public class EntityMapper {
         schedule.setPlate(entity.getPlate());
         schedule.setZone(entity.getZone());
         schedule.setDriverId(entity.getDriverId());
+        schedule.setConditionType(entity.getConditionType());
+        schedule.setVehicleType(entity.getVehicleType());
+        schedule.setServiceType(entity.getServiceType());
 
         LOG.debug("Mapped entity to domain model: {}", schedule);
         return schedule;

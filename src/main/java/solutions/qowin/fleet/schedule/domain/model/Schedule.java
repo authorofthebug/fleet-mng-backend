@@ -29,4 +29,7 @@ public class Schedule {
     private String destination;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private String serviceType;
+    private String conditionType;
+    private String vehicleType;
 }

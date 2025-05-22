@@ -26,6 +26,9 @@ public class DocumentDbEntity {
     private String destination;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private String serviceType;
+    private String conditionType;
+    private String vehicleType;
 
     public String getDriverId() {
         return driverId;
@@ -137,5 +140,29 @@ public class DocumentDbEntity {
 
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
+    }
+
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
+
+    public String getConditionType() {
+        return conditionType;
+    }
+
+    public void setConditionType(String conditionType) {
+        this.conditionType = conditionType;
+    }
+
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 }
